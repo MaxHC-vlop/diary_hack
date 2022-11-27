@@ -92,8 +92,8 @@ def main():
     except ObjectDoesNotExist as erro:
         logging.error(f'Student not found: {erro}')
 
-    except MultipleObjectsReturned as errm:
-        logging.error(f'More than 1 student found: {errm}')
+    except MultipleObjectsReturned as error:
+        logging.error(f'More than 1 student found: {error}')
 
     if args.marks:
         fix_marks(schoolkid)
