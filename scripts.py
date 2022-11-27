@@ -2,8 +2,6 @@ import argparse
 import os
 import logging
 
-logger = logging.getLogger(__file__)
-
 from random import choice
 
 import django
@@ -80,6 +78,7 @@ def get_user_args():
 
 
 def main():
+    logger = logging.getLogger(__file__)
     logging.basicConfig(level=logging.ERROR)
 
     args = get_user_args()
