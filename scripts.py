@@ -2,6 +2,8 @@ import argparse
 import os
 import logging
 
+logger = logging.getLogger(__file__)
+
 from random import choice
 
 import django
@@ -78,6 +80,8 @@ def get_user_args():
 
 
 def main():
+    logging.basicConfig(level=logging.ERROR)
+
     args = get_user_args()
 
     text=choice(PRAISES)
@@ -88,10 +92,10 @@ def main():
         schoolkid = Schoolkid.objects.get(full_name__contains=name)
 
     except Schoolkid.ObjectDoesNotExist as erro:
-        logging.error(f'Student not found: {erro}')
+        logger.error(f'Student not found: {erro}')
 
     except Schoolkid.MultipleObjectsReturned as error:
-        logging.error(f'More than 1 student found: {error}')
+        logger.error(f'More than 1 student found: {error}')
 
     if args.marks:
         fix_marks(schoolkid)
@@ -104,7 +108,7 @@ def main():
             create_commendation(schoolkid, discipline, text)
 
         except ObjectDoesNotExist as erro:
-            logging.error(f'Discipline not found: {erro}')
+            logger.error(f'Discipline not found: {erro}')
 
 
 if __name__ == '__main__':
