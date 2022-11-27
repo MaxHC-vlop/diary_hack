@@ -7,7 +7,6 @@ from random import choice
 import django
 from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 
-
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
 django.setup()
 from datacenter.models import (
