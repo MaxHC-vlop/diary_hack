@@ -5,7 +5,6 @@ import logging
 from random import choice
 
 import django
-from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
 django.setup()
@@ -20,9 +19,9 @@ PRAISES = [
         'Потрясающе!', 'Замечательно!', 'Прекрасное начало!', 'Так держать!'
 ]
 
+
 def fix_marks(schoolkid):
     marks = Mark.objects.filter(schoolkid=schoolkid, points__in=[2, 3]).update(points=5)
-
 
 
 def delete_chastisement(schoolkid):
