@@ -87,10 +87,10 @@ def main():
     try:
         schoolkid = Schoolkid.objects.get(full_name__contains=name)
 
-    except ObjectDoesNotExist as erro:
+    except Schoolkid.ObjectDoesNotExist as erro:
         logging.error(f'Student not found: {erro}')
 
-    except MultipleObjectsReturned as error:
+    except Schoolkid.MultipleObjectsReturned as error:
         logging.error(f'More than 1 student found: {error}')
 
     if args.marks:
