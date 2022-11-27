@@ -105,7 +105,7 @@ def main():
         try:
             create_commendation(schoolkid, discipline, text)
 
-        except ObjectDoesNotExist as erro:
+        except Lesson.ObjectDoesNotExist as erro:
             logger.error(f'Discipline not found: {erro}')
 
 
