@@ -40,14 +40,15 @@ def create_commendation(schoolkid, discipline, text):
         subject__title=discipline
     ).order_by('-date')
 
-    lesson = lessons.first()
-    Commendation.objects.create(
-        text=text,
-        schoolkid=schoolkid,
-        subject=lesson.subject,
-        created=lesson.date,
-        teacher=lesson.teacher
-    )
+    if lessons:
+        lesson = lessons.first()
+        Commendation.objects.create(
+            text=text,
+            schoolkid=schoolkid,
+            subject=lesson.subject,
+            created=lesson.date,
+            teacher=lesson.teacher
+        )
 
 
 def get_user_args():
